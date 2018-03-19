@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	filename := flag.String("f", "", "the file to serve")
+	filename := flag.String("f", ".", "the file to serve")
 	flag.Parse()
 
 	log.SetFlags(0)
@@ -27,5 +27,6 @@ func main() {
 		http.ServeFile(w, r, *filename+r.URL.Path)
 	})
 
+	log.Println("listening on localhost:9090")
 	log.Fatal(http.ListenAndServe(":9090", nil))
 }
