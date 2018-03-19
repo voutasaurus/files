@@ -24,7 +24,7 @@ func main() {
 			return
 		}
 
-		http.ServeFile(w, r, *filename)
+		http.ServeFile(w, r, *filename+r.URL.Path)
 	})
 
 	log.Fatal(http.ListenAndServe(":9090", nil))
